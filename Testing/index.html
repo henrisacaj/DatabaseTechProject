@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gym Gym</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<div class="header">
+    <header>
+        <h1>Gym Gym</h1>
+    </header>
+</div>
+
+<div class="innerContent">
+    <div class="navigation">
+        <aside>
+            <nav>
+                <ul>
+                    <li><a href="Grundbegriffe.html" class="vertical" >User-Profile</a></li>
+                    <li><a href="er-modell.html" class="vertical">Memberships</a></li>
+                    <li><a href="relationale-algebra.html" class="vertical">Extras</a></li>
+                    <li><a href="sql.html" class="vertical">Personal Trainer</a></li>
+                    <li><a href="data-integrity.html" class="vertical">History Of Gym</a></li>
+                    <li><a href="normalisierung.html" class="vertical">Administration</a></li>
+                </ul>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <form action="/select" method="post">
+      <button name="foo" value="Select">Select</button>
+    </form>
+    
+    <form action="/add" method="post">
+      <div class="elem">
+        <input type="text" id="Firstname" name="Firstname" size="20" 
+               placeholder="Max" required>
+      </div>
+      <button name="submit" value="add">add</button>
+    </form>
+
+    <form action="/add_user" method="post">
+            <fieldset>
+                <legend>Add Customer</legend>
+
+                <div class="eingabe">
+                  <div class="elem">
+                    <input type="text" id="Membership_id" size="20" 
+                           placeholder="Membership" >
+                  </div>
+                  <div class="elem">
+                    <input type="text" id="Trainer_id" name="Trainer_id" size="20" 
+                           placeholder="Trainer?">
+                  </div>
+                    <div class="elem">
+                        <input type="text" id="Firstname" name="Firstname" size="20" 
+                               placeholder="Max" >
+                    </div>
+                    <div class="elem">
+                      <input type="text" id="Lastname" name="Lastname"  size="20" 
+                             placeholder="Muster" >
+                    </div>
+                    <div class="elem">
+                      <input type="text" id="Street" name="Street" size="20" 
+                             placeholder="Am Berg 3" >
+                    </div>
+                    <div class="elem">
+                      <input type="text" id="ZIP Code" name="ZIP Code" size="20" 
+                             placeholder="ZIP Code" >
+                    </div>
+                    <div class="elem">
+                        <input type="email" id="email" name="email" size="20" 
+                               placeholder="max.muster@gmail.com" >
+                    </div>
+                    <div class="elem">
+                      <input type="text" id="Phone" name="Phone" size="20" 
+                             placeholder="Phone" >
+                    </div>
+                    <div class="elem">
+                      <input type="text" id="IBAN" name="IBAN" size="20" 
+                             placeholder="IBAN" >
+                    </div>
+                    <div class="elem">
+                      <input type="text" id="birthday" name="birthday" size="20" 
+                             placeholder="birthday" >
+                    </div>
+                    
+                </div>
+                <div class="group">
+                  <div class="sub_elem">
+                    <button name="submit" value="Add">Add</button>
+                    <input type="reset">
+                  </div>
+                </div>
+            </fieldset>
+        </form>
+  
+    <div class="mainContent">
+        <main>
+            <p>AI1014</p>
+            <pre>
+                                          ▒▒      ▒▒
+                                          ▒▒▒▒    ▒▒▒▒
+                                        ▒▒  ░░▒▒▒▒  ▒▒▒▒  ▒▒
+                                ▒▒▒▒▒▒▒▒▒▒    ░░▒▒  ░░▒▒▒▒▒▒
+                                  ▒▒░░  ▒▒░░  ░░░░    ▒▒░░▒▒  ▒▒
+                                    ▒▒░░        ░░░░  ░░░░▒▒▒▒▒▒
+                                ▒▒▒▒▒▒░░░░      ░░░░░░░░▒▒▒▒░░▒▒
+                                  ▒▒░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒  ▒▒
+                        ██████████▓▓▓▓▓▓▒▒▒▒▒▒▓▓▒▒    ▒▒▒▒▓▓▒▒▒▒
+                  ██████░░░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒    ▒▒  ▒▒▓▓▒▒
+                ██▒▒░░░░██▒▒▒▒▒▒▒▒▒▒▓▓▒▒  ▓▓▓▓▓▓▓▓▓▓▓▓▒▒    ▓▓
+                ████▒▒░░░░▒▒▓▓▓▓▒▒▒▒▒▒  ▒▒░░▒▒  ██▒▒░░▓▓▓▓▓▓▓▓
+              ▒▒  ░░██▒▒░░██▒▒▓▓▒▒░░██░░▒▒  ░░  ▒▒░░  ░░░░██
+            ▒▒  ▒▒██░░▒▒▒▒████▒▒▒▒██  ████░░            ░░██
+          ▒▒░░▒▒▒▒▒▒▒▒░░▒▒▒▒  ██▒▒██    ██▒▒        ░░▒▒░░██
+          ▒▒▒▒        ▒▒▒▒▒▒    ██▒▒  ▒▒▒▒██▒▒░░▒▒    ░░██
+        ▒▒▒▒            ▒▒▒▒    ██▒▒▒▒▒▒░░▒▒██▒▒░░░░░░██
+        ▒▒▒▒              ▒▒  ████▒▒██░░▒▒  ▒▒██████████
+      ▒▒  ▒▒    ▒▒▒▒        ▒▒██▒▒▒▒░░▒▒▒▒▒▒        ▒▒██
+      ▒▒  ▒▒  ▒▒    ▒▒      ▒▒▓▓██▒▒▒▒██▒▒██▒▒▒▒▒▒▓▓▒▒██
+      ▒▒  ▒▒▒▒▒▒    ▒▒      ▒▒████████▒▒██░░▒▒▒▒▒▒▓▓██
+      ▒▒  ▒▒▒▒▒▒▒▒▒▒        ▒▒██░░██▓▓██░░░░▒▒▒▒  ▒▒██
+        ▒▒▒▒▒▒▒▒          ▒▒  ██░░░░██▒▒░░░░▒▒    ██
+        ▒▒▒▒▒▒▒▒        ▒▒▒▒  ██░░░░▒▒▒▒▓▓░░░░▒▒██
+          ▒▒▒▒▒▒      ▒▒▒▒██▒▒░░░░▒▒░░░░░░▒▒██████
+            ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒░░░░▒▒▒▒██▒▒░░▒▒██
+            ▒▒▒▒▒▒░░    ▒▒██▒▒▒▒██▒▒▒▒▒▒██▒▒░░░░░░▒▒██
+            ██▒▒░░░░░░░░  ▒▒██████████████▒▒▒▒░░░░░░▒▒██
+      ██████░░▒▒▒▒░░░░░░▒▒▒▒████    ████████▒▒▒▒░░░░░░██
+    ██▒▒░░░░░░▒▒▒▒▒▒▒▒▒▒████        ██▒▒██▒▒████░░░░░░██
+░░██░░██░░▒▒▒▒▒▒▒▒▒▒▒▒██          ████▒▒██▒▒▒▒▒▒▒▒▒▒▒▒██
+░░██░░██▒▒▒▒▒▒▒▒▒▒████          ██▓▓██▒▒▒▒██▒▒▒▒▒▒▒▒██
+░░██▒▒░░████▒▒▒▒██              ██▒▒▓▓██▒▒▒▒████████
+  ████▒▒░░▒▒████                ██▒▒▓▓▓▓████████
+    ▓▓██████░░░░░░              ██▓▓▒▒▒▒██  ░░░░░░
+      ▒▒░░░░░░░░░░░░░░░░░░░░░░░░██▓▓▓▓▓▓██░░░░░░░░░░░░░░░░
+          ░░░░░░░░░░░░░░░░░░░░░░██▓▓▓▓██░░░░░░░░░░░░░░░░
+                ░░░░░░░░░░░░░░░░██    ██░░░░░░░░░░
+                    ░░░░░░░░░░░░░░████░░░░░░░░
+
+          </pre>
+        </main>
+    </div>
+</div>
+
+<div class="footer">
+    <footer>
+        <p class="wichtig">
+            Gymgym
+        </p>
+    </footer>
+</div>
+</body>
+</html>
