@@ -1,0 +1,108 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Gym Gym
+  link(rel='stylesheet' type='text/css' href='index.css')
+.header
+  header
+    h1 Gym Gym
+.innerContent
+  .navigation
+    aside
+      nav
+        ul
+          li
+            a.vertical(href='Grundbegriffe.html') User-Profile
+          li
+            a.vertical(href='er-modell.html') Memberships
+          li
+            a.vertical(href='relationale-algebra.html') Extras
+          li
+            a.vertical(href='sql.html') Personal Trainer
+          li
+            a.vertical(href='data-integrity.html') History Of Gym
+          li
+            a.vertical(href='normalisierung.html') Administration
+  form(action='/select' method='post')
+    button(name='foo' value='Select') Select
+  form(action='/add' method='post')
+    .elem
+      input#Firstname(type='text' name='Firstname' size='20' placeholder='Max' required='')
+    button(name='submit' value='add') add
+  form(action='/add_user' method='post')
+    fieldset
+      legend Add Customer
+      .eingabe
+        .elem
+          input#Membership_id(type='text' size='20' placeholder='Membership')
+        .elem
+          input#Trainer_id(type='text' name='Trainer_id' size='20' placeholder='Trainer?')
+        .elem
+          input#Firstname(type='text' name='Firstname' size='20' placeholder='Max')
+        .elem
+          input#Lastname(type='text' name='Lastname' size='20' placeholder='Muster')
+        .elem
+          input#Street(type='text' name='Street' size='20' placeholder='Am Berg 3')
+        .elem
+          input(type='text' id='ZIP Code' name='ZIP Code' size='20' placeholder='ZIP Code')
+        .elem
+          input#email(type='email' name='email' size='20' placeholder='max.muster@gmail.com')
+        .elem
+          input#Phone(type='text' name='Phone' size='20' placeholder='Phone')
+        .elem
+          input#IBAN(type='text' name='IBAN' size='20' placeholder='IBAN')
+        .elem
+          input#birthday(type='text' name='birthday' size='20' placeholder='birthday')
+      .group
+        .sub_elem
+          button(name='submit' value='Add') Add
+          input(type='reset')
+  .mainContent
+    main
+      p AI1014
+      pre.
+        \n                                          ▒▒      ▒▒
+                                                  ▒▒▒▒    ▒▒▒▒
+                                                ▒▒  ░░▒▒▒▒  ▒▒▒▒  ▒▒
+                                        ▒▒▒▒▒▒▒▒▒▒    ░░▒▒  ░░▒▒▒▒▒▒
+                                          ▒▒░░  ▒▒░░  ░░░░    ▒▒░░▒▒  ▒▒
+                                            ▒▒░░        ░░░░  ░░░░▒▒▒▒▒▒
+                                        ▒▒▒▒▒▒░░░░      ░░░░░░░░▒▒▒▒░░▒▒
+                                          ▒▒░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒  ▒▒
+                                ██████████▓▓▓▓▓▓▒▒▒▒▒▒▓▓▒▒    ▒▒▒▒▓▓▒▒▒▒
+                          ██████░░░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒    ▒▒  ▒▒▓▓▒▒
+                        ██▒▒░░░░██▒▒▒▒▒▒▒▒▒▒▓▓▒▒  ▓▓▓▓▓▓▓▓▓▓▓▓▒▒    ▓▓
+                        ████▒▒░░░░▒▒▓▓▓▓▒▒▒▒▒▒  ▒▒░░▒▒  ██▒▒░░▓▓▓▓▓▓▓▓
+                      ▒▒  ░░██▒▒░░██▒▒▓▓▒▒░░██░░▒▒  ░░  ▒▒░░  ░░░░██
+                    ▒▒  ▒▒██░░▒▒▒▒████▒▒▒▒██  ████░░            ░░██
+                  ▒▒░░▒▒▒▒▒▒▒▒░░▒▒▒▒  ██▒▒██    ██▒▒        ░░▒▒░░██
+                  ▒▒▒▒        ▒▒▒▒▒▒    ██▒▒  ▒▒▒▒██▒▒░░▒▒    ░░██
+                ▒▒▒▒            ▒▒▒▒    ██▒▒▒▒▒▒░░▒▒██▒▒░░░░░░██
+                ▒▒▒▒              ▒▒  ████▒▒██░░▒▒  ▒▒██████████
+              ▒▒  ▒▒    ▒▒▒▒        ▒▒██▒▒▒▒░░▒▒▒▒▒▒        ▒▒██
+              ▒▒  ▒▒  ▒▒    ▒▒      ▒▒▓▓██▒▒▒▒██▒▒██▒▒▒▒▒▒▓▓▒▒██
+              ▒▒  ▒▒▒▒▒▒    ▒▒      ▒▒████████▒▒██░░▒▒▒▒▒▒▓▓██
+              ▒▒  ▒▒▒▒▒▒▒▒▒▒        ▒▒██░░██▓▓██░░░░▒▒▒▒  ▒▒██
+                ▒▒▒▒▒▒▒▒          ▒▒  ██░░░░██▒▒░░░░▒▒    ██
+                ▒▒▒▒▒▒▒▒        ▒▒▒▒  ██░░░░▒▒▒▒▓▓░░░░▒▒██
+                  ▒▒▒▒▒▒      ▒▒▒▒██▒▒░░░░▒▒░░░░░░▒▒██████
+                    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒░░░░▒▒▒▒██▒▒░░▒▒██
+                    ▒▒▒▒▒▒░░    ▒▒██▒▒▒▒██▒▒▒▒▒▒██▒▒░░░░░░▒▒██
+                    ██▒▒░░░░░░░░  ▒▒██████████████▒▒▒▒░░░░░░▒▒██
+              ██████░░▒▒▒▒░░░░░░▒▒▒▒████    ████████▒▒▒▒░░░░░░██
+            ██▒▒░░░░░░▒▒▒▒▒▒▒▒▒▒████        ██▒▒██▒▒████░░░░░░██
+        ░░██░░██░░▒▒▒▒▒▒▒▒▒▒▒▒██          ████▒▒██▒▒▒▒▒▒▒▒▒▒▒▒██
+        ░░██░░██▒▒▒▒▒▒▒▒▒▒████          ██▓▓██▒▒▒▒██▒▒▒▒▒▒▒▒██
+        ░░██▒▒░░████▒▒▒▒██              ██▒▒▓▓██▒▒▒▒████████
+          ████▒▒░░▒▒████                ██▒▒▓▓▓▓████████
+            ▓▓██████░░░░░░              ██▓▓▒▒▒▒██  ░░░░░░
+              ▒▒░░░░░░░░░░░░░░░░░░░░░░░░██▓▓▓▓▓▓██░░░░░░░░░░░░░░░░
+                  ░░░░░░░░░░░░░░░░░░░░░░██▓▓▓▓██░░░░░░░░░░░░░░░░
+                        ░░░░░░░░░░░░░░░░██    ██░░░░░░░░░░
+                            ░░░░░░░░░░░░░░████░░░░░░░░
+        
+                          
+.footer
+  footer
+    p.wichtig
+      | Gymgym

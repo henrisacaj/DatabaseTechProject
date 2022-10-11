@@ -174,12 +174,14 @@ DELIMITER $$
 CREATE TRIGGER format_new_customer_name BEFORE INSERT ON customer
 FOR EACH ROW
 Begin
-	SET NEW.first_name = CONCAT(UPPER(SUBSTRING(NEW.first_name FROM 1 FOR 1)),LOWER(SUBSTRING(NEW.first_name, 1, LENGTH(new.first_name) )));
-    SET NEW.last_name = CONCAT(UPPER(SUBSTRING(NEW.last_name, 1, 1)), LOWER(SUBSTRING(NEW.last_name, 1, LENGTH(NEW.last_name))));
+	SET NEW.first_name = CONCAT(UPPER(SUBSTRING(NEW.first_name FROM 1 FOR 1)),LOWER(SUBSTRING(NEW.first_name, 2, LENGTH(new.first_name) )));
+    SET NEW.last_name = CONCAT(UPPER(SUBSTRING(NEW.last_name, 1, 1)), LOWER(SUBSTRING(NEW.last_name, 2, LENGTH(NEW.last_name))));
 
 END$$
 
 DELIMITER ;
+
+
 
 -- -------------------------------------------------------------------------------------------------------------
 
