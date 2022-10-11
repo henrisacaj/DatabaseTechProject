@@ -107,13 +107,28 @@ END$$
 DELIMITER ;
 
 
-CALL create_new_customer(5, 'Peter', 'Pan', 'Am Berg 3', '22123', 'peter@pan.de', '016459495', 'DE40090572231221179169', '1977-10-11');
+-- -----------------------------------------------------------------------------------------------------------
+
+CALL create_new_customer(5, 'PETER', 'pan', 'Am Berg 3', '22123', 'peter@pan.de', '016459495', 'DE40090572231221179169', '1977-10-11');
 
 SELECT check_user_with_name('Peter', 'Pan', '1977-10-11');
 
 SELECT check_user_with_id (105);
 
 CALL delete_customer(105);
+
+
+-- -------------------------------------------------------------------------------------------------------------
+-- function to extract month and day
+DELIMITER $$
+
+CREATE FUNCTION getMonthDay (p_date DATE) RETURNS VARCHAR(20)
+READS SQL DATA
+BEGIN 
+    RETURN date_format(p_date, '%m-%d');
+END $$
+
+DELIMITER ;
 
 
 
@@ -126,11 +141,50 @@ STARTS '2022-11-11'
 DO BEGIN
 	SELECT customer_id AS ID, CONCAT(first_name, ' ', last_name) AS 'Customer name', birthday AS 'Birthday', (YEAR(DATE(NOW())) - YEAR(birthday)) AS age
 	FROM customer
-	WHERE DATE_FORMAT(NOW(),'%m%d') = DATE_FORMAT(birthday, '%m%d');
+	WHERE getMonthDay(NOW()) = getMonthDay(birthday);
 
 END$$
 DELIMITER ;
 
 SHOW EVENTS;
+
+
+-- -------------------------------------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE FUNCTION checkOlderThan (p_date DATE, p_interval INT) RETURNS BOOLEAN
+READS SQL DATA
+BEGIN 
+    DECLARE result INT DEFAULT 0;
+    IF datediff(CURDATE(), p_date) > p_interval 
+    THEN SET result = 1;
+    END IF;
+    RETURN result;
+END $$
+
+DELIMITER ;
+
+DROP FUNCTION checkOlderThan;
+
+
+-- -------------------------------------------------------------------------------------------------------------
+-- Trigger: Name in correct format
+DELIMITER $$
+
+CREATE TRIGGER format_new_customer_name BEFORE INSERT ON customer
+FOR EACH ROW
+Begin
+	SET NEW.first_name = CONCAT(UPPER(SUBSTRING(NEW.first_name FROM 1 FOR 1)),LOWER(SUBSTRING(NEW.first_name, 1, LENGTH(new.first_name) )));
+    SET NEW.last_name = CONCAT(UPPER(SUBSTRING(NEW.last_name, 1, 1)), LOWER(SUBSTRING(NEW.last_name, 1, LENGTH(NEW.last_name))));
+
+END$$
+
+DELIMITER ;
+
+-- -------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
