@@ -1,11 +1,5 @@
 /********************************************************
-* This script creates the database schema 
-  __ _ _   _ _ __ ___  
- / _` | | | | '_ ` _ \ 
-| (_| | |_| | | | | | |
- \__, |\__, |_| |_| |_|
-  __/ | __/ |          
- |___/ |___/       
+* This script creates the database named gym-gym
 *********************************************************/
 
 DROP DATABASE IF EXISTS gym;
@@ -83,7 +77,7 @@ CREATE TABLE course (
 	course_id	INT	PRIMARY KEY	AUTO_INCREMENT,
     room_id INT,
 	course_name ENUM('Functional', 'Endurance', 'Stretch') NOT NULL,
-    course_description VARCHAR(100) DEFAULT NULL, # Full text index
+    course_description VARCHAR(100) DEFAULT NULL,
     CONSTRAINT FOREIGN KEY (room_id) REFERENCES room(room_id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
@@ -126,6 +120,3 @@ CREATE TABLE teaches (
     CONSTRAINT FOREIGN KEY (course_id) REFERENCES course(course_id) ON DELETE CASCADE
 );
 
-# Indexes
-# SELECT Statements
-# Views

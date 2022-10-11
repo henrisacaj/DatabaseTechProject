@@ -1,12 +1,3 @@
-/********************************************************
-* This script inserts the database data 
-  __ _ _   _ _ __ ___  
- / _` | | | | '_ ` _ \ 
-| (_| | |_| | | | | | |
- \__, |\__, |_| |_| |_|
-  __/ | __/ |          
- |___/ |___/       
-*********************************************************/
 
 INSERT INTO membership (membership_type, price)
 	VALUES('bronze', 23.20),
@@ -314,8 +305,8 @@ INSERT INTO teaches(trainer_id, course_id)
     (3, 9);
     
 
+CREATE FULLTEXT INDEX idx_description ON course (course_description);
 
 
-    
 
 
