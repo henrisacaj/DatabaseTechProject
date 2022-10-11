@@ -1,6 +1,4 @@
 var mysql = require('mysql');
-
-
 var express = require('express');
 var http = require('http');
 var app = express();
@@ -14,9 +12,6 @@ app.set('view engine', 'pug');
 // create application/json parser
 var jsonParser = bodyParser.json()
 
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -26,8 +21,11 @@ var con = mysql.createConnection({
 });
 
 // Body-parser middleware
-app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.json());
+
+app.use(express.static(__dirname + '/public'));
+
+
 
 // Datenabfrage
 app.post('/select', function(req,res){
@@ -59,6 +57,19 @@ app.post('/add_user', jsonParser, function(req,res){
     });
 });
 
+app.post('/add_customer', jsonParser, function(req,res){
+    res.setHeader('Content-Type', 'text/plain')
+    res.write('you posted:\n')
+    res.end(JSON.stringify(req.body, null, 2))
+    console.log("Using Body-parser: ", req.body)
+    
+    
+    var = create_new_customer = "CALL create_new_customer(?, ?, ?, ?, ?, ?, ?, ?, ?);"
+    con.query(create_new_customer, [req.membership_id, req.body.Firstname, req.body.Lastname, req.body.street, req.body.email, req.body.phone, req.body.iban, req.body.birthday], function (err, result) {
+        if (err) throw err;
+        console.log(result);
+    });
+});
 
 
 
@@ -69,8 +80,6 @@ app.listen(8080, function(){
 app.get('/', function(req,res){
   res.sendFile(path.join(__dirname,'./index.html'));
 });
-
-app.use(express.static(__dirname + '/public'));
 
 
 

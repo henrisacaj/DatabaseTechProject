@@ -19,12 +19,12 @@ app.use(express.json());
 
 app.use(express.static(__dirname + '/public'));
 
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-*/
+
 
 //>>> POST methods 
 
