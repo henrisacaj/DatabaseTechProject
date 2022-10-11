@@ -107,9 +107,9 @@ END$$
 DELIMITER ;
 
 
-CALL create_new_customer(5, 'Peter', 'Pan', 'Am Berg 3', '22123', 'peter@pan.de', '016459495', 'DE40090572231221179169', '1977-10-10');
+CALL create_new_customer(5, 'Peter', 'Pan', 'Am Berg 3', '22123', 'peter@pan.de', '016459495', 'DE40090572231221179169', '1977-10-11');
 
-SELECT check_user_with_name('Peter', 'Pan', '1977-10-10');
+SELECT check_user_with_name('Peter', 'Pan', '1977-10-11');
 
 SELECT check_user_with_id (105);
 
@@ -117,8 +117,20 @@ CALL delete_customer(105);
 
 
 
+-- -------------------------------------------------------------------------------------------------------------
+-- event for customer birthday
+DELIMITER $$
+CREATE EVENT event_customer_birthday
+ON SCHEDULE EVERY 1 DAY
+STARTS '2022-11-11'
+DO BEGIN
+	SELECT customer_id AS ID, CONCAT(first_name, ' ', last_name) AS 'Customer name', birthday AS 'Birthday', (YEAR(DATE(NOW())) - YEAR(birthday)) AS age
+	FROM customer
+	WHERE DATE_FORMAT(NOW(),'%m%d') = DATE_FORMAT(birthday, '%m%d');
 
+END$$
+DELIMITER ;
 
-
+SHOW EVENTS;
 
 
