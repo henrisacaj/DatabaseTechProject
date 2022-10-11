@@ -12,15 +12,19 @@ app.set('view engine', 'pug');
 // create application/json parser
 var jsonParser = bodyParser.json()
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "2774",
+    password: "db-tech",
     database: "gym",
 
 });
 
 // Body-parser middleware
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.json());
 
 app.use(express.static(__dirname + '/public'));
@@ -38,7 +42,7 @@ app.post('/select', function(req,res){
 app.post('/add', jsonParser, function(req,res){
     res.setHeader('Content-Type', 'text/plain')
     res.write('you posted:\n')
-    res.end(JSON.stringify(req.body.Firstname, null, 2))
+    res.end(JSON.stringify(req.body.body, null, 2))
     console.log("Using Body-parser: ", req.body)
 });
 
@@ -51,10 +55,10 @@ app.post('/add_user', jsonParser, function(req,res){
     console.log("Using Body-parser: ", req.body)
 
 
-    con.query(insert, [req.body.Firstname, req.body.Lastname,], function (err, result) {
-        if (err) throw err;
-        console.log(result);
-    });
+   // con.query(insert, [req.body.Firstname, req.body.Lastname,], function (err, result) {
+  //      if (err) throw err;
+  //      console.log(result);
+   // });
 });
 
 app.post('/add_customer', jsonParser, function(req,res){
