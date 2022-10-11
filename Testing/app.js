@@ -15,8 +15,8 @@ var jsonParser = bodyParser.json()
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "db-tech",
-    database: "sakila",
+    password: "2774",
+    database: "gym",
 
 });
 
@@ -58,17 +58,19 @@ app.post('/add_user', jsonParser, function(req,res){
 });
 
 app.post('/add_customer', jsonParser, function(req,res){
+    console.log(req.body.membership_id);
     res.setHeader('Content-Type', 'text/plain')
     res.write('you posted:\n')
     res.end(JSON.stringify(req.body, null, 2))
     console.log("Using Body-parser: ", req.body)
     
     
-    var = create_new_customer = "CALL create_new_customer(?, ?, ?, ?, ?, ?, ?, ?, ?);"
-    con.query(create_new_customer, [req.membership_id, req.body.Firstname, req.body.Lastname, req.body.street, req.body.email, req.body.phone, req.body.iban, req.body.birthday], function (err, result) {
+    var  create_new_customer = "CALL create_new_customer(?, ?, ?, ?, ?, ?, ?, ?, ?);"
+    con.query(create_new_customer, [req.body.membership_id, req.body.Firstname, req.body.Lastname, req.body.street, req.body.zipcode, req.body.email, req.body.phone, req.body.iban, req.body.birthday], function (err, result) {
         if (err) throw err;
         console.log(result);
     });
+
 });
 
 
@@ -88,9 +90,15 @@ app.get('/', function(req,res){
 //PUG yes yes
 
 
-app.get('/pugtest', function(req, res){
+app.get('/mainsite', function(req, res){
     res.render(
         'test.pug',
         {title : 'Der gute Try', message : 'YesyEs Sehr gut'}
+    )
+})
+
+app.get('/customer', function(req, res){
+    res.render(
+        'customer.pug'
     )
 })
