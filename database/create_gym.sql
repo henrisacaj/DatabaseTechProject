@@ -1,5 +1,11 @@
 /********************************************************
-* This script creates the database named gym-gym
+* This script creates the database schema 
+  __ _ _   _ _ __ ___  
+ / _` | | | | '_ ` _ \ 
+| (_| | |_| | | | | | |
+ \__, |\__, |_| |_| |_|
+  __/ | __/ |          
+ |___/ |___/       
 *********************************************************/
 
 DROP DATABASE IF EXISTS gym;
