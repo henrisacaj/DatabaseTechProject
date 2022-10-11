@@ -7,6 +7,10 @@ var app = express();
 var path = require("path");
 var bodyParser = require('body-parser');
 
+//pug
+var pug = require('pug');
+app.set('view engine', 'pug');
+
 // create application/json parser
 var jsonParser = bodyParser.json()
 
@@ -56,6 +60,8 @@ app.post('/add_user', jsonParser, function(req,res){
 });
 
 
+
+
 app.listen(8080, function(){
     console.log("server is running on port 8080");
 })
@@ -65,3 +71,17 @@ app.get('/', function(req,res){
 });
 
 app.use(express.static(__dirname + '/public'));
+
+
+
+
+
+//PUG yes yes
+
+
+app.get('/pugtest', function(req, res){
+    res.render(
+        'test.pug',
+        {title : 'Der gute Try', message : 'YesyEs Sehr gut'}
+    )
+})
