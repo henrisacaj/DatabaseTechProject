@@ -1,3 +1,6 @@
+## Erster Teil: Beispieldatensatz
+## Zweiter Teil: Index, der für Select-Statements benutzt wird.
+
 
 INSERT INTO membership (membership_type, price)
 	VALUES('bronze', 23.20),
@@ -304,9 +307,6 @@ INSERT INTO teaches(trainer_id, course_id)
     (11, 9),
     (3, 9);
     
+## Full Text Index zum schnelleren Suchen von Kursbeschreibungen
 
 CREATE FULLTEXT INDEX idx_description ON course (course_description);
-
-
-
-
