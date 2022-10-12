@@ -23,6 +23,6 @@ Reihenfolge der Skript-Ausführung:
 
 ## Starten des Backends und Frontends
 - root-Passwort in der app.js anpassen
-- app.js starten mithilfe von folgendem Befehl:  
+- [app.js](webapp/app.js) starten mithilfe von folgendem Befehl:  
   ```node app.js```
 - http://localhost:8080/ im Browser öffnen
