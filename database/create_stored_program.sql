@@ -9,6 +9,9 @@
 *********************************************************/
 
 -- -------------------------------------------------------------------------------------------------------------
+
+# Prozedur zum Erstellen eines neuen Kunden inklusive Error-Handling und Transaction
+
 DELIMITER $$
 CREATE PROCEDURE `create_new_customer`
 (
@@ -29,7 +32,7 @@ BEGIN
     DECLARE EXIT HANDLER FOR SQLEXCEPTION -- SQLEXCEPTION: Shorthand for the class of SQLSTATE values that do not begin with '00', '01', or '02'. 
 		BEGIN 
 			GET CURRENT DIAGNOSTICS CONDITION 1 errno = MYSQL_ERRNO;
-            SELECT errno AS MYSQL_ERROR;
+SELECT errno AS MYSQL_ERROR;
             ROLLBACK;
         END;
         
@@ -45,6 +48,9 @@ DELIMITER ;
 
 
 -- -------------------------------------------------------------------------------------------------------------
+
+# # Prozedur zum Löschen eines Kunden inklusive Error-Handling und Transaction
+
 DELIMITER $$
 CREATE PROCEDURE `delete_customer`
 (
@@ -71,9 +77,11 @@ END$$
 DELIMITER ;
 
 -- -------------------------------------------------------------------------------------------------------------
--- Check customer name with customerid OR show the customer_id for given customer with firstname and lastname
+
+# Ausgabe des Customer-Namens durch Eingabe einer Customer-ID
+
 DELIMITER $$
-CREATE FUNCTION `check_user_with_id`(p_customer_id INT) RETURNS VARCHAR(60)
+CREATE FUNCTION `get_customer_name_by_id`(p_customer_id INT) RETURNS VARCHAR(60)
 READS SQL DATA
 
 BEGIN
@@ -89,9 +97,11 @@ END$$
 DELIMITER ;
 
 -- -------------------------------------------------------------------------------------------------------------
--- show the customer_id for given customer with firstname and lastname and birthday
+
+# Ausgabe der Customer-ID durch Eingabe eines Customer-Namens und -Geburtstags
+
 DELIMITER $$
-CREATE FUNCTION `check_user_with_name`(p_first_name VARCHAR(30), p_last_name VARCHAR(30), p_birthday DATE) RETURNS INT
+CREATE FUNCTION `get_customer_id_by_name`(p_first_name VARCHAR(30), p_last_name VARCHAR(30), p_birthday DATE) RETURNS INT
 READS SQL DATA
 
 BEGIN
@@ -108,18 +118,20 @@ DELIMITER ;
 
 
 -- -----------------------------------------------------------------------------------------------------------
+### Beispiele zum Testen der Funktionen und Prozeduren
 
-CALL create_new_customer(5, 'PETER', 'pan', 'Am Berg 3', '22123', 'peter@pan.de', '016459495', 'DE40090572231221179169', '1977-10-11');
+# CALL create_new_customer(5, 'PETER', 'pan', 'Am Berg 3', '22123', 'peter@pan.de', '016459495', 'DE40090572231221179169', '1977-10-11');
 
-SELECT check_user_with_name('Peter', 'Pan', '1977-10-11');
+# SELECT check_user_with_name('Peter', 'Pan', '1977-10-11');
 
-SELECT check_user_with_id (105);
+# SELECT check_user_with_id (<customer_id>);
 
-CALL delete_customer(105);
+# CALL delete_customer(<customer_id>);
 
 
 -- -------------------------------------------------------------------------------------------------------------
--- function to extract month and day
+# Funktion zum Extrahieren des Monats und Tages von einem Date
+
 DELIMITER $$
 
 CREATE FUNCTION getMonthDay (p_date DATE) RETURNS VARCHAR(20)
@@ -133,7 +145,9 @@ DELIMITER ;
 
 
 -- -------------------------------------------------------------------------------------------------------------
--- event for customer birthday
+
+# Event, das jeden Tag prüft, ob ein Kunde Geburtstag hat
+
 DELIMITER $$
 CREATE EVENT event_customer_birthday
 ON SCHEDULE EVERY 1 DAY
@@ -146,10 +160,13 @@ DO BEGIN
 END$$
 DELIMITER ;
 
-SHOW EVENTS;
+# SHOW EVENTS;
 
 
 -- -------------------------------------------------------------------------------------------------------------
+
+# Funktion zum Checken, ob das eingegebene Datum älter als der eingegebene Interval ist --> Wartung von Equipment und checken, seit wann Kunden angemeldet sind
+
 DELIMITER $$
 
 CREATE FUNCTION checkOlderThan (p_date DATE, p_interval INT) RETURNS BOOLEAN
@@ -164,11 +181,13 @@ END $$
 
 DELIMITER ;
 
-DROP FUNCTION checkOlderThan;
+# DROP FUNCTION checkOlderThan;
 
 
 -- -------------------------------------------------------------------------------------------------------------
--- Trigger: Name in correct format
+
+# Trigger zum Formatieren des Kundennamens (nach dem Format Max Mustermann)
+
 DELIMITER $$
 
 CREATE TRIGGER format_new_customer_name BEFORE INSERT ON customer
@@ -180,13 +199,3 @@ Begin
 END$$
 
 DELIMITER ;
-
-
-
--- -------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
