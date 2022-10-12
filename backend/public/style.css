@@ -1,0 +1,25 @@
+
+body {
+    margin:0;
+    padding:0;
+    border:0;
+}
+.komplett{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.container {
+
+    align-items: left;
+    justify-content: left;
+
+}
+
+
+.containerS {
+    align-items: left;
+    justify-content: left;
+    padding-left: 100px;
+}
