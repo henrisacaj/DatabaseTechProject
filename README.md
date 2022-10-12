@@ -1,6 +1,7 @@
 # Database Technologies Project
 
 ## Datenbank für ein Fitnessstudio zur Verwaltung der Mitarbeiter, Kunden, Geräte, Abos usw.
+Mehr Informationen über die Tabellen und deren Beziehungen können dem [EER-Diagram](database/EER_Diagram.mwb) entnommen werden.
 
 ## Installation der Datenbank
 
