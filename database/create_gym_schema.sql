@@ -40,8 +40,8 @@ CREATE TABLE trainer (
 CREATE TABLE customer (
     customer_id INT PRIMARY KEY AUTO_INCREMENT,
     membership_id INT NOT NULL,
-    first_name VARCHAR(30) NOT NULL, #REGEX
-    last_name VARCHAR(30) NOT NULL, #REGEX
+    first_name VARCHAR(30) NOT NULL, 
+    last_name VARCHAR(30) NOT NULL, 
     street VARCHAR(30) NOT NULL,
     postal_code INT DEFAULT NULL,
     email VARCHAR(50) DEFAULT NULL UNIQUE,
