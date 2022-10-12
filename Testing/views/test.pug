@@ -1,6 +1,24 @@
 extends ../layout/layout.pug
 block lay
-    h1= message 
-    h1= title 
-    h6 Main Menu
+    h1 Main Menu
+    div
+        div.container
+            h5 Hier sind unsere Extras
+            table.table
+                thead
+                    tr
+                        th(scope='col') Extra
+                        th(scope='col') Raum
+                        th(scope='col') Mitgliedschaften
+                
+                tbody
+                each val in dataMemb
+                    tr
+                        td=val.extra_name
+                        td=val.room_name
+                        td=val.membership_type
+
+
+
+
 

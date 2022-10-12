@@ -1,8 +1,8 @@
 extends ../layout/layout.pug
 block lay
-
+    h1 #{custMesAd.mess} #{custMesAd.firstname} #{custMesAd.lastname}
     form(action="add_customer" method="POST" name='customers')
-
+    
         label Membershipbody
         input(type="number" name="membership_id" )
         br
@@ -31,3 +31,12 @@ block lay
         input(type="date" name="birthday" )
         br
         input(type='submit')
+
+    form(action="add_customer" method="POST" name='customers')
+
+        label Membershipbody
+        input(type="number" name="membership_id" )
+        br
+        input(type='submit')
+
+    

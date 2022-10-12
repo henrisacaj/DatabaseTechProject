@@ -18,7 +18,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "2774",
+    password: "db-tech",
     database: "gym",
 
 });
@@ -46,34 +46,48 @@ app.post('/add', jsonParser, function(req,res){
     console.log("Using Body-parser: ", req.body)
 });
 
-var insert = "INSERT INTO actor (first_name, last_name) VALUES (?, ?)"
-
-app.post('/add_user', jsonParser, function(req,res){
-    res.setHeader('Content-Type', 'text/plain')
-    res.write('you posted:\n')
-    res.end(JSON.stringify(req.body, null, 2))
-    console.log("Using Body-parser: ", req.body)
 
 
-   // con.query(insert, [req.body.Firstname, req.body.Lastname,], function (err, result) {
-  //      if (err) throw err;
-  //      console.log(result);
-   // });
-});
+
+
+
+
 
 app.post('/add_customer', jsonParser, function(req,res){
     console.log(req.body.membership_id);
-    res.setHeader('Content-Type', 'text/plain')
-    res.write('you posted:\n')
-    res.end(JSON.stringify(req.body, null, 2))
+    //res.setHeader('Content-Type', 'text/plain')
+    //res.write('you posted:\n')
+    //res.end(JSON.stringify(req.body, null, 2))
     console.log("Using Body-parser: ", req.body)
     
     
     var  create_new_customer = "CALL create_new_customer(?, ?, ?, ?, ?, ?, ?, ?, ?);"
     con.query(create_new_customer, [req.body.membership_id, req.body.Firstname, req.body.Lastname, req.body.street, req.body.zipcode, req.body.email, req.body.phone, req.body.iban, req.body.birthday], function (err, result) {
-        if (err) throw err;
+        if (err){
+            var message = "Fehler beim einfügen!!";
+            res.render(
+                'successCust.pug',
+                {message: message, firstname: req.body.Firstname , lastname: req.body.Lastname}
+            )
+
+            //throw err;
+
+        } 
+        else {console.log("Customer created:");
         console.log(result);
+        var message = { Mess: "Der Kunde wurde erfolgreich hinzugefügt",
+                firstname: req.body.Firstname,
+                lastname: req.body.Lastname
+        };
+        res.render(
+            'customer.pug',
+            {custMesAd: message}
+        )
+        }
+        
     });
+
+   
 
 });
 
@@ -92,17 +106,30 @@ app.get('/', function(req,res){
 
 
 //PUG yes yes
-
+var  get_view_extras = "SELECT * FROM gym.membership_extra;"
 
 app.get('/mainsite', function(req, res){
-    res.render(
-        'test.pug',
-        {title : 'Der gute Try', message : 'YesyEs Sehr gut'}
-    )
+
+    con.query(get_view_extras, function(error, results, fields) {
+        if(error);
+        else {
+            console.log('The solution is: ', results);
+            res.render(
+                'test.pug',
+                {dataMemb: results}
+            )
+        }
+    })
+
+
+
+
 })
 
 app.get('/customer', function(req, res){
+    
     res.render(
-        'customer.pug'
+        'customer.pug',
+        {}
     )
 })
