@@ -12,7 +12,7 @@ Link zum Trello-Board: https://trello.com/b/Q96VAacI/gym
 ## Beschreibung des Anwendungsfalls
 
 Wir haben eine MySQL Gym-Datenbank zur Verwaltung der Mitarbeiter, Kunden, Abos, Geräte, Kurse und Räume. 
-Auf der Webseite können Mitarbeiter neue Kunden hinzufügen sowie bestehende Kunden löschen.  
+Auf der Webseite können Mitarbeiter neue Kunden hinzufügen sowie bestehende Kunden löschen. Zudem können Kunden mit Hilfe des Namen + Geburtstag die Kunden-ID herausfinden.
 Die Kunden können sich die Abos mit den jeweiligen Extras anzeigen lassen.  
 
 ## Reflexion von Entwurf und Umsetzung
@@ -47,7 +47,7 @@ Die Kunden können sich die Abos mit den jeweiligen Extras anzeigen lassen.
   - Event zum täglichen Überprüfen, ob ein Kunde an dem aktuellen Tag Geburtstag hat
   - Trigger zum Formatieren des Kundennamens vor dem INSERT in die customer-Tabelle
 
-- Heausforderungen/Probleme
+- Herausforderungen/Probleme
   - Wir hatten das Ziel, mithilfe einer Audit-Tabelle auf der Webseite ausgeben zu lassen, zu welchen Uhrzeiten das Fitnessstudio oft besucht wird. Hier würden wir die last_login-Timestamps speichern und verarbeiten. Leider konnten wir dies aus Zeitgründen nicht umsetzen.
   - Anzahl der Tabellen niedrig zu halten war schwierig, da wir möglichst viele Beziehungen zwischen den Tabellen umsetzen mussten.  
   Lösung: Durch Vorkenntnisse/Erfahrung aus dem Pflichtmodul Datenbanksysteme konnten wir das Schema trotzdem realisieren.
