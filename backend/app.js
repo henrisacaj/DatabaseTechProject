@@ -19,7 +19,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "2774",
-    database: "gym",
+    database: "my_gym",
 
 });
 
@@ -108,10 +108,10 @@ app.listen(8080, function(){
 
 
 //PUG yes yes
-var  get_view_extras = "SELECT * FROM gym.membership_extra;"
+var  get_view_extras = "SELECT * FROM my_gym.membership_extra;"
 
 app.get('/', function(req, res){
-
+    console.log("Läuft");
     con.query(get_view_extras, function(error, results, fields) {
         if(error);
         else {
