@@ -22,7 +22,7 @@ Reihenfolge der Skript-Ausführung:
  - [Select-Statements](database/select_statements.sql)
 
 ## Starten des Backends und Frontends
-- Passwort in der [app.js](webapp/app.js) anpassen
+- Passwort in der [app.js](webapp/app.js) (Zeile 21) anpassen
 - app.js starten mithilfe von folgendem Befehl:  
   ```node app.js```
 - http://localhost:8080/ im Browser öffnen
