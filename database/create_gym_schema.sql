@@ -1,5 +1,5 @@
 /********************************************************
-* This script creates the database named gym-gym
+* This script creates the database named my-gym
 *********************************************************/
 
 DROP DATABASE IF EXISTS my_gym;
