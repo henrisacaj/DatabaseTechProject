@@ -22,6 +22,7 @@ Reihenfolge der Skript-Ausführung:
  - [Select-Statements](database/select_statements.sql)
 
 ## Starten des Backends und Frontends
-- Das Passwort in der Zeile 21 der app.js an das eigene MySQL-Root anpassen
+- root-Passwort in der app.js anpassen
 - app.js starten mithilfe von folgendem Befehl:  
   ```node app.js```
+- http://localhost:8080/ im Browser öffnen
