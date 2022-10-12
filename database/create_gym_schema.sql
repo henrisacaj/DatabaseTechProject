@@ -2,9 +2,9 @@
 * This script creates the database named gym-gym
 *********************************************************/
 
-DROP DATABASE IF EXISTS gym;
-CREATE DATABASE gym;
-USE gym;
+DROP DATABASE IF EXISTS my_gym;
+CREATE DATABASE my_gym;
+USE my_gym;
 
 -- create the table for the database
 
