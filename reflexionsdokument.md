@@ -1,9 +1,9 @@
 # Reflexionsdokument 
 
 ## Arbeitsverteilung des Teams
-Datenbankentwurf, Schemadefinition und Datenbankanbindung haben wir zusammen bearbeitet.
+Datenbankentwurf, Schemadefinition und Datenbankanbindung haben wir als Team zusammen bearbeitet.
 - Henri hat sich mit den Select-Statements, Indizes und Views beschäftigt. 
-- Alex hat sich um die Stored-Programms (Prozeduren, Funktionen, Trigger, Events) gekümmert.
+- Alex hat sich mit den Stored-Programs (Prozeduren, Funktionen, Trigger, Events) auseinandergesetzt.
 - Omar hat neben dem Beispieldatensatz noch das Frontend erstellt.  
 
 Mehr Informationen sind unter [Product_Backlog](Product_Backlog.PNG) zu finden.  
@@ -19,8 +19,7 @@ Die Kunden können sich die Abos mit den jeweiligen Extras anzeigen lassen.
 
 - Auswahl der Primary-Keys: Der Primary-Key besteht in fast allen Tabellen aus der ID.   
   - Bei den sogenannten "Verknüpfungstabellen" (hier includes, teaches und attends) besteht der PK aus den PKs der Entitäten, die miteinander in Beziehung stehen. 
-- Normalisierung
-  - Alle Tabellen sind in der 3. Normalform. 
+- Normalisierung: Alle Tabellen sind in der 3. Normalform. 
 - Constraints
   - Überprüfen der Attribut-Werte mithilfe von Regexes (PLZ, E-Mail, IBAN)
   - Foreign Key Constraints (Einschränkung durch ON DELETE/UPDATE CASCADE/SET NULL...)
@@ -49,9 +48,9 @@ Die Kunden können sich die Abos mit den jeweiligen Extras anzeigen lassen.
 
 - Herausforderungen/Probleme
   - Wir hatten das Ziel, mithilfe einer Audit-Tabelle auf der Webseite ausgeben zu lassen, zu welchen Uhrzeiten das Fitnessstudio oft besucht wird. Hier würden wir die last_login-Timestamps speichern und verarbeiten. Leider konnten wir dies aus Zeitgründen nicht umsetzen.
-  - Anzahl der Tabellen niedrig zu halten war schwierig, da wir möglichst viele Beziehungen zwischen den Tabellen umsetzen mussten.  
+  - Die Anzahl der Tabellen niedrig zu halten war eine Schwierigkeit, da wir möglichst viele Beziehungen zwischen den Tabellen umsetzen mussten.  
   Lösung: Durch Vorkenntnisse/Erfahrung aus dem Pflichtmodul Datenbanksysteme konnten wir das Schema trotzdem realisieren.
-  - Frontend: alle wenig Erfahrung mit Node.js und Web-Design ==> schwierig, innerhalb so einer kurzer Zeit alles umzusetzen. 
+  - Frontend: Wir hatten alle wenig Erfahrung mit Node.js und Web-Design ==> schwierig, innerhalb so einer kurzer Zeit alles umzusetzen. 
   Lösung: Wir haben uns auf das Wesentliche und die Hauptelemente der Webseite konzentriert.  
 
 - Besonderheiten:
