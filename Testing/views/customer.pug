@@ -1,9 +1,9 @@
 extends ../layout/layout.pug
 block lay
-    h1 #{custMesAd.mess} #{custMesAd.firstname} #{custMesAd.lastname}
+    h6 Füge einen Kunden hinzu
     form(action="add_customer" method="POST" name='customers')
     
-        label Membershipbody
+        label MembershipID
         input(type="number" name="membership_id" )
         br
         label Firstname
@@ -30,13 +30,27 @@ block lay
         label Birthday
         input(type="date" name="birthday" )
         br
-        input(type='submit')
+        input(type='submit' value='hinzufügen' )
+    p #{custMesAd.mess} #{custMesAd.firstname} #{custMesAd.lastname}
 
-    form(action="add_customer" method="POST" name='customers')
-
-        label Membershipbody
-        input(type="number" name="membership_id" )
+    h6 Lösche einen Kunden
+    form(action="deleteCustomer" method="POST" name='delCustomers')
+        label KundenID
+        input(type="number" name="customerNumber" )
         br
-        input(type='submit')
-
+        input(type='submit' value='löschen')
+    p #{custMesAd.deleteMessage}
+    h6 Lösche einen Kunden
+    form(action="findCustomer" method="POST" name='findCustomer')
+        label Vorname
+        input(type="text" name="Firstname" )
+        br
+        label Nachname
+        input(type="text" name="Lastname" )
+        br
+        label Geburtstag
+        input(type="date" name="birthday" )
+        br
+        input(type='submit' value='finden')
+    p #{custMesAd.findMessage}
     
