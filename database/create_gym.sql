@@ -26,7 +26,7 @@ CREATE TABLE employee (
     position SET('Trainer', 'Instructor', 'Accountant', 'Housekeeping', 'Janitor', 'CEO'),
     birthday DATE DEFAULT NULL,
     CONSTRAINT `CHECK_EMPLOYEE_EMAIL` CHECK(REGEXP_LIKE(email, '^[A-Z0-9._%-]+@[A-Z0-9.-]+.[A-Z]{2,4}$')),
-    CONSTRAINT `CHECK_EMPLOYEE_IBAN` CHECK(REGEXP_LIKE(iban, '^DE[a-zA-Z0-9]{2}\s?([0-9]{4}\s?){4}([0-9]{2})\s?$'))
+    CONSTRAINT `CHECK_EMPLOYEE_IBAN` CHECK(REGEXP_LIKE(iban, '^DE[0-9]{2}\s?([0-9]{4}\s?){4}([0-9]{2})\s?$'))
 );
 
 
@@ -55,7 +55,7 @@ CREATE TABLE customer (
         REFERENCES membership (membership_id) ON DELETE CASCADE,
 	CONSTRAINT `CHECK_POSTAL_CODE` CHECK(REGEXP_LIKE(postal_code, '^[0-9]{5}$')),
     CONSTRAINT `CHECK_CUSTOMER_EMAIL` CHECK(REGEXP_LIKE(email, '^[A-Z0-9._%-]+@[A-Z0-9.-]+.[A-Z]{2,4}$')),
-    CONSTRAINT `CHECK_CUSTOMER_IBAN` CHECK(REGEXP_LIKE(iban, '^DE[a-zA-Z0-9]{2}\s?([0-9]{4}\s?){4}([0-9]{2})\s?$'))
+    CONSTRAINT `CHECK_CUSTOMER_IBAN` CHECK(REGEXP_LIKE(iban, '^DE[0-9]{2}\s?([0-9]{4}\s?){4}([0-9]{2})\s?$'))
 );
 
 CREATE TABLE trains (
@@ -119,4 +119,3 @@ CREATE TABLE teaches (
     CONSTRAINT FOREIGN KEY (trainer_id) REFERENCES trainer(trainer_id) ON DELETE CASCADE,
     CONSTRAINT FOREIGN KEY (course_id) REFERENCES course(course_id) ON DELETE CASCADE
 );
-
